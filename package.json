@@ -1,0 +1,26 @@
+{
+  "name": "expert-garbanzo",
+  "version": "1.0.0",
+  "description": "This is G3TSN1P3D's employee tracker made with Node.js and MySQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "run test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/G3TSN1P3D/expert-garbanzo.git"
+  },
+  "author": "G3TSN1P3D",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/G3TSN1P3D/expert-garbanzo/issues"
+  },
+  "homepage": "https://github.com/G3TSN1P3D/expert-garbanzo#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.20.1"
+  }
+}
