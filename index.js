@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
-const mysql = require("mysql2");
-require("dotenv").config();
+const db = require("./db");
+require("console.table");
 
 const questionStatements = {
   viewAllDepartments: "View All Departments",
@@ -29,12 +29,6 @@ const questions = [
   },
 ];
 
-// const db = mysql.createConnection({
-//     host: 'localhost',
-//     user: process.env.DB_USER,
-//     database: process.env.DB_NAME
-// })
-
 function prompt() {
   inquirer.prompt(questions).then((answer) => {
     console.log(answer);
@@ -45,16 +39,68 @@ function prompt() {
       case questionStatements.viewAllRoles:
         viewRoles();
         break;
+      case questionStatements.viewAllEmployees:
+        viewEmployees();
+        break;
+      case questionStatements.addDepartment:
+        insertDeparment();
+        break;
+      case questionStatements.addRole:
+        insertRole();
+        break;
     }
   });
 }
 function viewDepartments() {
-    console.log('You are viewing all departments!')
+  db.findDepartments().then(([departments]) => {
+    console.log("You are viewing all departments!");
+    console.table(departments);
     prompt();
+  });
 }
 function viewRoles() {
-    console.log('You are viewing all roles!')
+  db.findRoles().then(([roles]) => {
+    console.log("You are viewing all roles!");
+    console.table(roles);
     prompt();
+  });
+}
+function viewEmployees() {
+  db.findEmployee().then(([employee]) => {
+    console.log("You are viewing all Employees!");
+    console.table(employee);
+    prompt();
+  });
+}
+function insertDeparment() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "departmentName",
+        message: "Write the new department name: ",
+      },
+    ])
+    .then((answer) => {
+      let name = answer.departmentName;
+      db.makeDepartment(name)
+        .then(() => console.log("Added Department"))
+        .then(() => {
+          viewDepartments();
+        });
+    });
+}
+function insertRole() {
+  inquirer.prompt([
+    {
+      type: "list",
+      name: "departmentsOp",
+      message: "Please select the corresponding department",
+      choices: db.findDepartmentsAsList((() => {
+        console.log(myArray);
+      }))
+    }
+  ])
 }
 
 prompt();
