@@ -1,11 +1,7 @@
 USE tracker_db;
 INSERT INTO department (name)
 VALUES ("finance"),
-    ("development"),
-    ("QA"),
-    ("testing"),
-    ("marketing"),
-    ("sales");
+    ("development")
 INSERT INTO role (title, salary, department_id)
 VALUES ("Accountant", 65000.00, 1),
     ("Assistant", 35000.00, 1),
