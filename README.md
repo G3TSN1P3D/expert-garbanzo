@@ -37,7 +37,11 @@ MIT License
 
 ## Features
 
-dotenv, inquirer, mysql2, sequelize
+- [Video](https://drive.google.com/file/d/1JYVSYRtFE-k3q5Me8Bn5tzP5zKfoqOYF/view)
+- dotenv
+- inquirer
+- mysql2
+- sequelize
 
 ## How to Contribute
 
